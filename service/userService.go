@@ -110,8 +110,8 @@ func RegisterUser(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	query := `INSERT INTO user (first_name, last_name, email,password) VALUES (?, ?,?,?)`
-	res, err := db.Exec(query, userCarrier.Email, hash, userCarrier.Role)
+	query := `INSERT INTO User (username, email,password) VALUES (?, ?,?)`
+	res, err := db.Exec(query, userCarrier.Username, userCarrier.Email, hash)
 	if err != nil {
 		logger.WithFields(logrus.Fields{
 			"IP":     clientIP,
@@ -168,7 +168,7 @@ func GetUsers(c *gin.Context) {
 	// Get client IP
 	clientIP := c.ClientIP()
 
-	query := "SELECT * FROM user"
+	query := "SELECT * FROM User"
 	res, err := db.Query(query)
 	defer res.Close()
 	if err != nil {
@@ -182,7 +182,7 @@ func GetUsers(c *gin.Context) {
 	users := []model.User{}
 	for res.Next() {
 		var user model.User
-		err := res.Scan(&user.ID, &user.Email, &user.Password, &user.Role)
+		err := res.Scan(&user.ID, &user.Username, &user.Email, &user.Password, &user.CreatedAt)
 		if err != nil {
 			logger.WithFields(logrus.Fields{
 				"IP":     clientIP,
@@ -238,7 +238,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	query := `SELECT * FROM user WHERE email = ?`
+	query := `SELECT * FROM User WHERE email = ?`
 	rows, err := db.Query(query, attempt.Email)
 	if err != nil {
 		logger.Error(err)
@@ -249,7 +249,7 @@ func Login(c *gin.Context) {
 	found := false
 	for rows.Next() {
 		var user model.User
-		if err := rows.Scan(&user.ID, &user.Email, &user.Password, &user.Role); err != nil {
+		if err := rows.Scan(&user.ID, &user.Username, &user.Email, &user.Password, &user.CreatedAt); err != nil {
 			logger.Error(err)
 			log.Fatal(err)
 		}
