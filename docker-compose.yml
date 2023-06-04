@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  userService:
+    container_name: userService
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    image: go-gin-wrapper:1.0
+    volumes:
+      - ./userService:/app
+    ports:
+      - 8080:8080
+    command: ["go", "run", "main.go"]
+
+
+  frontend:
+    build: 
+      context: ./react-frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 3000:3000
+    links:
+      - backend
+    command: ["npm", "start"]
