@@ -272,7 +272,7 @@ func Login(c *gin.Context) {
 			"expire": time.Now().Add(time.Hour * 24 * 30).Unix(),
 		})
 
-		token.Header["kid"] = "daksoj3028ihubgkjnlkvm243y7rufied"
+		token.Header["kid"] = "sim2"
 
 		tokenString, err := token.SignedString([]byte(os.Getenv("SECRET")))
 		if err != nil {
