@@ -53,7 +53,7 @@ func RegisterUser(c *gin.Context) {
 		log.Fatal("(RegisterUser) c.BindJSON", err)
 	}
 
-	query1 := `SELECT email FROM user WHERE email = ?`
+	query1 := `SELECT email FROM User WHERE email = ?`
 	rows, err := db.Query(query1, userCarrier.Email)
 	if err != nil {
 		logger.WithFields(logrus.Fields{

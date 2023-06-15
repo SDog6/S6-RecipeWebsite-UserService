@@ -1,0 +1,2 @@
+{"IP":"::1","Status":"Error","level":"error","msg":"Error 1146 (42S02): target: recipewebsite.-.primary: vttablet: rpc error: code = NotFound desc = Table 'recipewebsite.user' doesn't exist (errno 1146) (sqlstate 42S02) (CallerID: 4kzquuw6yk47nj93pj71): Sql: \"select email from `user` where 1 != 1\", BindVars: {REDACTED}","time":"2023-06-15T14:43:44+02:00"}
+{"IP":"::1","Status":"Success","level":"info","msg":"User registered successfully","time":"2023-06-15T14:44:41+02:00"}
