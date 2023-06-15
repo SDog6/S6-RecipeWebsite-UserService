@@ -2,3 +2,4 @@
 {"Email":"email@gmail.com","IP":"::1","Status":"Success","level":"info","msg":"Login successful","time":"2023-06-15T14:49:57+02:00"}
 {"Email":"email@gmail.com","IP":"::1","Status":"Success","level":"info","msg":"Login successful","time":"2023-06-15T14:53:21+02:00"}
 {"Email":"email@gmail.com","IP":"::1","Status":"Success","level":"info","msg":"Login successful","time":"2023-06-15T14:53:53+02:00"}
+{"Email":"email@gmail.com","IP":"::1","Status":"Success","level":"info","msg":"Login successful","time":"2023-06-15T15:13:09+02:00"}
