@@ -1,6 +1,6 @@
 
 #base image to be used
-FROM golang:1.18.3-alpine as builder
+FROM golang:1.21rc3-alpine as builder
 #select app folder
 WORKDIR /S6-RecipeWebsite-UserService
 #copy go file to install packages
